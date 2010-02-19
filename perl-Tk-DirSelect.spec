@@ -1,17 +1,20 @@
 %define upstream_name       Tk-DirSelect
-%define upstream_version    1.11
+%define upstream_version 1.12
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
 Release:    %mkrel 1
-License:    GPL or Artistic
-Group:      Development/Perl
+
 Summary:    Cross-platform directory selection widget
+License:    GPL+ or Artistic
+Group:      Development/Perl
 Url:        http://search.cpan.org/dist/%{upstream_name}
-Source:     http://www.cpan.org/modules/by-module/Tk/%{upstream_name}-%{upstream_version}.tar.gz
+Source0:    http://www.cpan.org/modules/by-module/Tk/%{upstream_name}-%{upstream_version}.tar.gz
+
 BuildRequires: perl(Tk)
+
 BuildArch: noarch
-BuildRoot:  %{_tmppath}/%{name}-%{version}
+BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 This module provides a cross-platform directory selection widget. For
@@ -33,7 +36,7 @@ installed.
 %make
 
 %check
-make test
+%make test
 
 %install
 rm -rf %buildroot
@@ -47,5 +50,3 @@ rm -rf %buildroot
 %doc README Changes
 %{_mandir}/man3/*
 %perl_vendorlib/*
-
-
