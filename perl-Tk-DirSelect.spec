@@ -1,20 +1,20 @@
 %define upstream_name       Tk-DirSelect
 %define upstream_version 1.12
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 2
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	3
 
-Summary:    Cross-platform directory selection widget
-License:    GPL+ or Artistic
-Group:      Development/Perl
-Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/modules/by-module/Tk/%{upstream_name}-%{upstream_version}.tar.gz
+Summary:	Cross-platform directory selection widget
+License:	GPL+ or Artistic
+Group:		Development/Perl
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/Tk/%{upstream_name}-%{upstream_version}.tar.gz
 
-BuildRequires: perl(Tk)
+BuildRequires:	perl-devel
+BuildRequires:	perl(Tk)
 
-BuildArch: noarch
-BuildRoot:  %{_tmppath}/%{name}-%{version}-%{release}
+BuildArch:	noarch
 
 %description
 This module provides a cross-platform directory selection widget. For
@@ -32,21 +32,34 @@ installed.
 %setup -q -n %{upstream_name}-%{upstream_version} 
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
+perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
 %make test
 
 %install
-rm -rf %buildroot
 %makeinstall_std
 
-%clean
-rm -rf %buildroot
-
 %files
-%defattr(-,root,root)
 %doc README Changes
 %{_mandir}/man3/*
-%perl_vendorlib/*
+%{perl_vendorlib}/*
+
+%changelog
+* Mon Apr 18 2011 Funda Wang <fwang@mandriva.org> 1.120.0-2mdv2011.0
++ Revision: 655239
+- rebuild for updated spec-helper
+
+* Fri Feb 19 2010 Jérôme Quelin <jquelin@mandriva.org> 1.120.0-1mdv2011.0
++ Revision: 508046
+- update to 1.12
+
+* Sat Jul 04 2009 Guillaume Rousse <guillomovitch@mandriva.org> 1.110.0-1mdv2010.0
++ Revision: 392114
+- import perl-Tk-DirSelect
+
+
+* Sat Jul 04 2009 cpan2dist 1.11-1mdv
+- initial mdv release, generated with cpan2dist
+
