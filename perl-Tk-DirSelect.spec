@@ -2,14 +2,14 @@
 %define upstream_version 1.12
 
 Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
-Release:	5
+Version:	%{upstream_version}
+Release:	6
 
 Summary:	Cross-platform directory selection widget
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		https://search.cpan.org/dist/%{upstream_name}
-Source0:	http://www.cpan.org/modules/by-module/Tk/%{upstream_name}-%{upstream_version}.tar.gz
+Url:		https://metacpan.org/dist/Tk-DirSelect
+Source0:	https://cpan.metacpan.org/authors/id/M/MJ/MJCARMAN/Tk-DirSelect-%{upstream_version}.tar.gz
 
 BuildRequires:	make
 BuildRequires:	perl-devel
